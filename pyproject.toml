@@ -8,6 +8,9 @@ authors = ["Masayuki1009 <smasayukii1009@gmail.com>"]
 python = "^3.10"
 fastapi = "^0.79.0"
 uvicorn = {extras = ["standard"], version = "^0.18.2"}
+line-bot-sdk = "^2.3.0"
+deepl = "^1.9.0"
+python-dotenv = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
