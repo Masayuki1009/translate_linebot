@@ -17,7 +17,8 @@ load_dotenv() #check .env file and add data to 環境変数
 
 ACCESS_TOKEN = os.environ.get("LINE_MESSGAE_API_ACCESS_TOKEN")
 CHANNEL_SECRET = os.environ.get("LINE_MESSAGE_API_SECRET")
-
+DEEPL_AUTH_KEY = os.environ.get("DEEPL_AUTH_KEY")
+translater = deepl.Translator(DEEPL_AUTH_KEY)
 
 line_bot_api = LineBotApi(ACCESS_TOKEN)
 handler = WebhookHandler(CHANNEL_SECRET)
@@ -37,10 +38,11 @@ async def callback(request: Request, x_line_signature=Header(None)):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
           print(event)
+          translated_text = translater.translate_text(event.message.text, target_lang="JA")
           try:
                     line_bot_api.reply_message(
                     event.reply_token,
-                    TextSendMessage(text=f"thank you!, you sent {event.message.text}!")
+                    TextSendMessage(text=f"thank you!, you sent {translated_text}!")
           )
           except Error as error:
                     print(error)
