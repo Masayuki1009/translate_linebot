@@ -15,7 +15,7 @@ from linebot.models import (
 load_dotenv() #check .env file and add data to 環境変数
 
 
-ACCESS_TOKEN = os.environ.get("LINE_MESSGAE_API_ACCESS_TOKEN")
+ACCESS_TOKEN = os.environ.get("LINE_MESSAGE_API_ACCESS_TOKEN")
 CHANNEL_SECRET = os.environ.get("LINE_MESSAGE_API_SECRET")
 DEEPL_AUTH_KEY = os.environ.get("DEEPL_AUTH_KEY")
 translater = deepl.Translator(DEEPL_AUTH_KEY)
